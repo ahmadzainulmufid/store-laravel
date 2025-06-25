@@ -68,8 +68,3 @@ php artisan migrate
 php artisan serve
 
 Open http://localhost:8000 in your browser.
-
-## 📚 Documentation
-
-Official Laravel documentation is available at:
-🔗 https://laravel.com/docs/10.x
