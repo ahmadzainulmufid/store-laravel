@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,16 @@ Route::get('/dashboard/transactions/{id}', [App\Http\Controllers\TransactionCont
 
 Route::get('/dashboard/settings', [App\Http\Controllers\SettingController::class, 'index'])->name('dashboard-settings');
 Route::get('/dashboard/account', [App\Http\Controllers\SettingController::class, 'account'])->name('dashboard-account');
+
+//    ->middleware(['auth', 'admin'])
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function(){
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
+    });
+
+
 
 Auth::routes();
 

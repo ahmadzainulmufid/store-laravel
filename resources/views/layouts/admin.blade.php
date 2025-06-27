@@ -12,6 +12,8 @@
     @stack('prepend-style')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="/style/main.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.3.2/datatables.min.css" rel="stylesheet"
+        integrity="sha384-nt2TuLL4RlRQ9x6VTFgp009QD7QLRCYX17dKj9bj51w2jtWUGFMVTveRXfdgrUdx" crossorigin="anonymous">
     @stack('addon-style')
 </head>
 
@@ -21,40 +23,30 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="dahsboardlogo" class="my-4" />
+                    <img src="/images/admin.png" alt="adminLogo" class="my-4" style="max-width: 150px" />
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="{{ url('dashboard') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="list-group-item list-group-item-action {{ request()->is('admin') ? 'active' : '' }}">
                         Dashboard
                     </a>
-
-                    <a href="{{ url('dashboard/products') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/products*') ? 'active' : '' }}">
-                        My Products
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Products
                     </a>
-
-                    <a href="{{ url('dashboard/transactions') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/transactions*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.category.index') }}"
+                        class="list-group-item list-group-item-action {{ request()->is('admin/category*') ? 'active' : '' }}">
+                        Categories
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
                         Transactions
                     </a>
-
-                    <a href="{{ url('dashboard/settings') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/settings*') ? 'active' : '' }}">
-                        Store Settings
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Users
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Sign Out
                     </a>
 
-                    <a href="{{ url('dashboard/account') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/account*') ? 'active' : '' }}">
-                        My Account
-                    </a>
-
-                    <!-- <a
-              href="/index.html"
-              class="list-group-item list-group-item-action"
-            >
-              Sign Out
-            </a> -->
                 </div>
             </div>
 
@@ -80,16 +72,8 @@
                                         Hi, Zainul
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                        <a href="{{ route('dashboard-account') }}" class="dropdown-item">Settings</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a href="/" class="dropdown-item">Logout</a>
+                                        <a href="#" class="dropdown-item">Sign Out</a>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-inline-block mt-2" href="#">
-                                        <img src="/images/icon-cart-empty.svg" alt="" />
-                                    </a>
                                 </li>
                             </ul>
 
@@ -97,9 +81,6 @@
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link"> Hi, Zainul </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link d-inline-block"> Cart </a>
                                 </li>
                             </ul>
                         </div>
@@ -114,8 +95,11 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.3.2/datatables.min.js"
+        integrity="sha384-rL0MBj9uZEDNQEfrmF51TAYo90+AinpwWp2+duU1VDW/RG7flzbPjbqEI3hlSRUv" crossorigin="anonymous">
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
