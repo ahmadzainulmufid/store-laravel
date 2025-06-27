@@ -30,7 +30,8 @@
                         class="list-group-item list-group-item-action {{ request()->is('admin') ? 'active' : '' }}">
                         Dashboard
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('admin.product.index') }}"
+                        class="list-group-item list-group-item-action {{ request()->is('admin/product*') ? 'active' : '' }}">
                         Products
                     </a>
                     <a href="{{ route('admin.category.index') }}"
