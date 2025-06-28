@@ -33,7 +33,7 @@ class ProductGalleryController extends Controller
                                     Aksi
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="action' . $item->id . '">
-                                    <form action="' . route('admin.product.destroy', $item->id) . '" method="POST">
+                                    <form action="' . route('admin.product-gallery.destroy', $item->id) . '" method="POST">
                                         ' . method_field('delete') . csrf_field() . '
                                         <button type="submit" class="dropdown-item text-danger">Hapus</button>
                                     </form>
@@ -107,7 +107,7 @@ class ProductGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        $item = Product::findOrFail($id);
+        $item = ProductGallery::findOrFail($id);
         $item->delete();
 
         return redirect()->route('admin.product-gallery.index');
