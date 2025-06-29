@@ -117,7 +117,6 @@
             el: "#register",
             mounted() {
                 AOS.init();
-
             },
             methods: {
                 checkForEmailAvailability: function() {
