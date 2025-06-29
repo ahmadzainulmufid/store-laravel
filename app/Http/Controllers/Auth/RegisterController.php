@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -63,7 +63,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'store_name' => ['nullable', 'string', 'max:255'],
-            'categories_id' => ['nullable', 'integer', 'exists:categories_id'],
+            'categories_id' => ['nullable', 'integer', 'exists:categories,id'],
             'is_store_open' => ['required'],
         ]);
     }
