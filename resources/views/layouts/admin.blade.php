@@ -42,16 +42,22 @@
                         class="list-group-item list-group-item-action {{ request()->is('admin/category*') ? 'active' : '' }}">
                         Categories
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('admin.transaction.index') }}"
+                        class="list-group-item list-group-item-action {{ request()->is('admin/transaction') ? 'active' : '' }}">
                         Transactions
                     </a>
                     <a href="{{ route('admin.user.index') }}"
                         class="list-group-item list-group-item-action {{ request()->is('admin/user*') ? 'active' : '' }}">
                         Users
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="list-group-item list-group-item-action">
                         Sign Out
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
 
@@ -74,10 +80,17 @@
                                         data-toggle="dropdown">
                                         <img src="/images/icon-user.png" alt="user"
                                             class="rounded-circle mr-2 profile-picture" />
-                                        Hi, Zainul
+                                        Hi, {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item">Sign Out</a>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();"
+                                            class="dropdown-item">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -85,7 +98,7 @@
                             <!-- Mobile Menu -->
                             <ul class="navbar-nav d-block d-lg-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link"> Hi, Zainul </a>
+                                    <a href="#" class="nav-link"> Hi, {{ Auth::user()->name }} </a>
                                 </li>
                             </ul>
                         </div>

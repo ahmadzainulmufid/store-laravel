@@ -30,6 +30,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');
 
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/checkout/success', function () {
+    return redirect('/home');
+})->name('checkout-success');
 
 
 Route::group(['middleware' => ['auth']], function(){
@@ -67,6 +70,7 @@ Route::prefix('admin')
         Route::resource('user', App\Http\Controllers\Admin\UserController::class);
         Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
         Route::resource('product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class);
+        Route::resource('transaction', App\Http\Controllers\Admin\TransactionController::class);
     });
 
 Auth::routes();
