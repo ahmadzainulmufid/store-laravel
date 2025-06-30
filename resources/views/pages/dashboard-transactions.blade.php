@@ -27,96 +27,69 @@
                     <div class="tab-pane fade show active" id="sell" role="tabpanel" aria-labelledby="sell-tab">
                         <div class="row mt-3">
                             <div class="col-12 mt-2">
-                                <a class="card card-list d-block" href="{{ url('dashboard/transactions/details') }}">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="/images/dashboard-icon-product-1.png" alt="" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                Shirup Marzzan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Angga Risky
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="/images/dashboard-arrow-right.svg" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="card card-list d-block" href="{{ url('dashboard/transactions/details') }}">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="/images/dashboard-icon-product-2.png" alt="" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                LeBrone X
-                                            </div>
-                                            <div class="col-md-3">
-                                                Masayoshi
-                                            </div>
-                                            <div class="col-md-3">
-                                                11 January, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="/images/dashboard-arrow-right.svg" alt="" />
+                                @foreach ($sellTransaction as $transaction)
+                                    <a class="card card-list d-block"
+                                        href="{{ route('dashboard-transactions-details', $transaction->id) }}">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($transaction->product->galleries->first()->photo ?? '') }}"
+                                                        class="w-50" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $transaction->product->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $transaction->product->store_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $transaction->created_at }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="/images/dashboard-arrow-right.svg" alt="" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                                <a class="card card-list d-block" href="{{ url('dashboard/transactions/details') }}">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="/images/dashboard-icon-product-3.png" alt="" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                Soffa Lembutte
-                                            </div>
-                                            <div class="col-md-3">
-                                                Shayna
-                                            </div>
-                                            <div class="col-md-3">
-                                                11 January, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="/images/dashboard-arrow-right.svg" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endforeach
+                                {{-- <div class="mt-3">
+                                    {{ $sellTransaction->withQueryString()->links() }}
+                                </div> --}}
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-pane fade" id="buy" role="tabpanel" aria-labelledby="buy-tab">
                         <div class="row mt-3">
                             <div class="col-12 mt-2">
-                                <a class="card card-list d-block" href="{{ url('dashboard/transactions/details') }}">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="/images/dashboard-icon-product-1.png" alt="" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                Shirup Marzzan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Angga Risky
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="/images/dashboard-arrow-right.svg" alt="" />
+                                @foreach ($buyTransaction as $transaction)
+                                    <a class="card card-list d-block"
+                                        href="{{ route('dashboard-transactions-details', $transaction->id) }}">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($transaction->product->galleries->first()->photo ?? '') }}"
+                                                        class="w-50" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $transaction->product->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $transaction->product->store_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $transaction->created_at }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="/images/dashboard-arrow-right.svg" alt="" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endforeach
+                                {{-- <div class="mt-3">
+                                    {{ $buyTransaction->withQueryString()->links() }}
+                                </div> --}}
                             </div>
                         </div>
                     </div>
